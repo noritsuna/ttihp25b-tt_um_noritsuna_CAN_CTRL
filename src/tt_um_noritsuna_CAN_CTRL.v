@@ -19,13 +19,24 @@ module tt_um_noritsuna_CAN_CTRL (
 	input  wire       rst_n
 );
 
-	wire _unused = &{ena, clk, ui_in[3], uo_out[2], uo_out[3], uo_out[4], uo_out[5], uo_out[6], uo_out[7], 1'b0};
+	// All output pins must be assigned. If not used, assign to 0.
+	assign uio_out[7:0] = 0;
+	assign uo_out[7:5] = 0;
+
+	// IOs: Enable path (active high: 0=input, 1=output)
+	assign uio_oe[3:0] = 0;
+	assign uio_oe[7:4] = 0;
+
+	// TT pins
+	assign uo_out[2] = ena;
+	assign uo_out[3] = clk;
+	assign uo_out[4] = rst_n;
 
 	CAN_CONTROLLER can_ctrl(
 		.CAN_TX(uo_out[0]),
 		.TXING(uo_out[1]),
 		.CAN_RX(ui_in[0]),
-		.RESET(rst_n),
+		.RESET_N(ui_in[3]),
 		.CLOCK_SIGNAL_IN(ui_in[2]),
 		.send_data(ui_in[1]),
 

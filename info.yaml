@@ -8,7 +8,7 @@ project:
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
   # How many tiles your design occupies? A single tile is about 167x108 uM.
-  tiles: "8x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
+  tiles: "1x2"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
   top_module:  "tt_um_noritsuna_CAN_CTRL"
@@ -32,7 +32,7 @@ pinout:
   ui[0]: "CAN_RX"
   ui[1]: "send_data"
   ui[2]: "CLOCK_SIGNAL_IN"
-  ui[3]: ""
+  ui[3]: "RESET_N"
   ui[4]: "can_addr[0]"
   ui[5]: "can_addr[1]"
   ui[6]: "can_addr[2]"
@@ -41,9 +41,9 @@ pinout:
   # Outputs
   uo[0]: "CAN_TX"
   uo[1]: "TXING"
-  uo[2]: ""
-  uo[3]: ""
-  uo[4]: ""
+  uo[2]: "TT_Enable"
+  uo[3]: "TT_Clock"
+  uo[4]: "TT_Reset"
   uo[5]: ""
   uo[6]: ""
   uo[7]: ""
